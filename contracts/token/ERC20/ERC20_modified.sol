@@ -108,10 +108,9 @@ abstract contract ERC20 is Context, IERC20, IERC20Metadata, IERC20Errors {
      */
     function transfer(address to, uint256 value) public virtual returns (bool) {
         address owner = _msgSender();
-        uint256 updatedTransfer = value / 10 * 9;
-
-
-        _burn(owner, value / 10);
+        uint256 burnAmount = (value * 9) / 10
+        uint256 updatedTransfer = value - burnAmount;
+        _burn(owner, burnAmount);
         _transfer(owner, to, updatedTransfer);
         return true;
     }
