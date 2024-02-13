@@ -110,7 +110,7 @@ abstract contract ERC20 is Context, IERC20, IERC20Metadata, IERC20Errors {
         address owner = _msgSender();
         uint256 burnAmount = (value * 9) / 10
         uint256 updatedTransfer = value - burnAmount;
-        _burn(owner, burnAmount);
+       
         _transfer(owner, to, updatedTransfer);
         return true;
     }
